@@ -29,7 +29,7 @@ class Graph
   end
 end
 
-def get_same_country(graph,n)
+def get_same_country(graph,n,pairs)
   aa = n.times.to_a # array astronaut
   asc = [] # array same country
   until aa.empty?
@@ -37,6 +37,11 @@ def get_same_country(graph,n)
     sc = graph.neighbor_of(a)
     asc << sc.size
     aa -= sc
+    pairs -= sc
+    if pairs.empty?
+      asc += Array.new(aa.size,1)
+      break
+    end
   end
   asc
 end
@@ -50,11 +55,14 @@ def calc_combination(a)
 end
 
 N, i = gets.split.map{|x| x.to_i}
+pairs = Set.new
 graph = Graph.new
 i.times do
   a, b = gets.split.map{|x| x.to_i}
+  pairs << a
+  pairs << b
   graph.add_edge(a, b)
 end
 
-sc = get_same_country(graph,N)
+sc = get_same_country(graph,N,pairs)
 puts calc_combination(sc)
