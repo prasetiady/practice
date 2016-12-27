@@ -71,44 +71,62 @@ def get_matrix_index(min,max,i)
   [x,y]
 end
 
-min = [1,1]
-max = [4,4]
-puts "-" * 40
-puts get_array_index(min,max,[1,1])
-puts get_array_index(min,max,[1,2])
-puts get_array_index(min,max,[1,3])
-puts get_array_index(min,max,[1,4])
-puts get_array_index(min,max,[2,4])
-puts get_array_index(min,max,[3,4])
-puts get_array_index(min,max,[4,4])
-puts get_array_index(min,max,[4,3])
-puts get_array_index(min,max,[4,2])
-puts get_array_index(min,max,[4,1])
-puts get_array_index(min,max,[3,1])
-puts get_array_index(min,max,[2,1])
-puts "-" * 40
-puts get_matrix_index(min,max,0).inspect
-puts get_matrix_index(min,max,1).inspect
-puts get_matrix_index(min,max,2).inspect
-puts get_matrix_index(min,max,3).inspect
-puts get_matrix_index(min,max,4).inspect
-puts get_matrix_index(min,max,5).inspect
-puts get_matrix_index(min,max,6).inspect
-puts get_matrix_index(min,max,7).inspect
-puts get_matrix_index(min,max,8).inspect
-puts get_matrix_index(min,max,9).inspect
-puts get_matrix_index(min,max,10).inspect
-puts get_matrix_index(min,max,11).inspect
-
-min = [1,1]
-max = [2,2]
-puts "-" * 40
-puts get_array_index(min,max,[1,1])
-puts get_array_index(min,max,[1,2])
-puts get_array_index(min,max,[2,2])
-puts get_array_index(min,max,[2,1])
-puts "-" * 40
-puts get_matrix_index(min,max,0).inspect
-puts get_matrix_index(min,max,1).inspect
-puts get_matrix_index(min,max,2).inspect
-puts get_matrix_index(min,max,3).inspect
+# min = [1,1]
+# max = [4,4]
+# puts "-" * 40
+# puts get_array_index(min,max,[1,1])
+# puts get_array_index(min,max,[1,2])
+# puts get_array_index(min,max,[1,3])
+# puts get_array_index(min,max,[1,4])
+# puts get_array_index(min,max,[2,4])
+# puts get_array_index(min,max,[3,4])
+# puts get_array_index(min,max,[4,4])
+# puts get_array_index(min,max,[4,3])
+# puts get_array_index(min,max,[4,2])
+# puts get_array_index(min,max,[4,1])
+# puts get_array_index(min,max,[3,1])
+# puts get_array_index(min,max,[2,1])
+# puts "-" * 40
+# puts get_matrix_index(min,max,0).inspect
+# puts get_matrix_index(min,max,1).inspect
+# puts get_matrix_index(min,max,2).inspect
+# puts get_matrix_index(min,max,3).inspect
+# puts get_matrix_index(min,max,4).inspect
+# puts get_matrix_index(min,max,5).inspect
+# puts get_matrix_index(min,max,6).inspect
+# puts get_matrix_index(min,max,7).inspect
+# puts get_matrix_index(min,max,8).inspect
+# puts get_matrix_index(min,max,9).inspect
+# puts get_matrix_index(min,max,10).inspect
+# puts get_matrix_index(min,max,11).inspect
+#
+# min = [1,1]
+# max = [2,2]
+# puts "-" * 40
+# puts get_array_index(min,max,[1,1])
+# puts get_array_index(min,max,[1,2])
+# puts get_array_index(min,max,[2,2])
+# puts get_array_index(min,max,[2,1])
+# puts "-" * 40
+# puts get_matrix_index(min,max,0).inspect
+# puts get_matrix_index(min,max,1).inspect
+# puts get_matrix_index(min,max,2).inspect
+# puts get_matrix_index(min,max,3).inspect
+#
+# min = [0,0]
+# max = [1,6]
+# puts "-" * 40
+# puts get_matrix_index(min,max,0).inspect
+# puts get_matrix_index(min,max,1).inspect
+# puts get_matrix_index(min,max,2).inspect
+# puts get_matrix_index(min,max,3).inspect
+# puts get_matrix_index(min,max,4).inspect
+# puts get_matrix_index(min,max,5).inspect
+# puts get_matrix_index(min,max,6).inspect
+# puts get_matrix_index(min,max,7).inspect
+# puts get_matrix_index(min,max,8).inspect
+# puts get_matrix_index(min,max,9).inspect
+# puts get_matrix_index(min,max,10).inspect
+# puts get_matrix_index(min,max,11).inspect
+# puts get_matrix_index(min,max,12).inspect
+# puts get_matrix_index(min,max,13).inspect
