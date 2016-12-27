@@ -1,13 +1,13 @@
 M,N,R = gets.strip.split.map(&:to_i)
 
 puts "DEBUG: M = #{M}, N = #{N}, R = #{R}"
-a = []
+matrix = []
 M.times do
-  a << gets.strip.split.map(&:to_i)
+  matrix << gets.strip.split.map(&:to_i)
 end
 
-def print_a(a)
-  a.each do |row|
+def print_matrix(matrix)
+  matrix.each do |row|
     s = ""
     row.each do |n|
       s += "#{n} "
@@ -71,62 +71,59 @@ def get_matrix_index(min,max,i)
   [x,y]
 end
 
-# min = [1,1]
-# max = [4,4]
-# puts "-" * 40
-# puts get_array_index(min,max,[1,1])
-# puts get_array_index(min,max,[1,2])
-# puts get_array_index(min,max,[1,3])
-# puts get_array_index(min,max,[1,4])
-# puts get_array_index(min,max,[2,4])
-# puts get_array_index(min,max,[3,4])
-# puts get_array_index(min,max,[4,4])
-# puts get_array_index(min,max,[4,3])
-# puts get_array_index(min,max,[4,2])
-# puts get_array_index(min,max,[4,1])
-# puts get_array_index(min,max,[3,1])
-# puts get_array_index(min,max,[2,1])
-# puts "-" * 40
-# puts get_matrix_index(min,max,0).inspect
-# puts get_matrix_index(min,max,1).inspect
-# puts get_matrix_index(min,max,2).inspect
-# puts get_matrix_index(min,max,3).inspect
-# puts get_matrix_index(min,max,4).inspect
-# puts get_matrix_index(min,max,5).inspect
-# puts get_matrix_index(min,max,6).inspect
-# puts get_matrix_index(min,max,7).inspect
-# puts get_matrix_index(min,max,8).inspect
-# puts get_matrix_index(min,max,9).inspect
-# puts get_matrix_index(min,max,10).inspect
-# puts get_matrix_index(min,max,11).inspect
-#
-# min = [1,1]
-# max = [2,2]
-# puts "-" * 40
-# puts get_array_index(min,max,[1,1])
-# puts get_array_index(min,max,[1,2])
-# puts get_array_index(min,max,[2,2])
-# puts get_array_index(min,max,[2,1])
-# puts "-" * 40
-# puts get_matrix_index(min,max,0).inspect
-# puts get_matrix_index(min,max,1).inspect
-# puts get_matrix_index(min,max,2).inspect
-# puts get_matrix_index(min,max,3).inspect
-#
-# min = [0,0]
-# max = [1,6]
-# puts "-" * 40
-# puts get_matrix_index(min,max,0).inspect
-# puts get_matrix_index(min,max,1).inspect
-# puts get_matrix_index(min,max,2).inspect
-# puts get_matrix_index(min,max,3).inspect
-# puts get_matrix_index(min,max,4).inspect
-# puts get_matrix_index(min,max,5).inspect
-# puts get_matrix_index(min,max,6).inspect
-# puts get_matrix_index(min,max,7).inspect
-# puts get_matrix_index(min,max,8).inspect
-# puts get_matrix_index(min,max,9).inspect
-# puts get_matrix_index(min,max,10).inspect
-# puts get_matrix_index(min,max,11).inspect
-# puts get_matrix_index(min,max,12).inspect
-# puts get_matrix_index(min,max,13).inspect
+def border_length(m,n)
+  (2 * m) + (2 * n) - 4
+end
+
+def rotate_left(arr,k)
+  if k > arr.length
+    k = k % arr.length
+  end
+  arr[k..-1].concat(arr[0..k-1])
+end
+
+def rotate_matrix(matrix,m,n,r)
+  puts "DEBUG: matrix = #{matrix.inspect}"
+  puts "DEBUG: m = #{m}, n = #{n}"
+  n_m = m
+  n_n = n
+  begin
+    x_min = 0 + (m - n_m)/2
+    y_min = x_min
+    x_max = m - 1 - (m - n_m)/2
+    y_max = n - 1 - (n - n_n)/2
+    min = [x_min,y_min]
+    max = [x_max,y_max]
+    puts "DEBUG: min = #{min.inspect}"
+    puts "DEBUG: max = #{max.inspect}"
+    b_l = border_length(n_m,n_n)
+    puts "DEBUG: b_l = #{b_l.inspect}"
+    arr = []
+    b_l.times do |i|
+      puts "DEBUG: i = #{i.inspect}"
+      i_matrix = get_matrix_index(min,max,i)
+      puts "DEBUG: i_matrix = #{i_matrix.inspect}"
+      v_matrix = matrix[i_matrix[0]][i_matrix[1]]
+      puts "DEBUG: v_matrix = #{v_matrix}"
+      arr << v_matrix
+    end
+    puts "DEBUG: matrix = #{matrix.inspect}"
+    puts "DEBUG: arr = #{arr.inspect}"
+    arr = rotate_left(arr,r)
+    arr.size.times do |i|
+      puts "DEBUG: i = #{i.inspect}"
+      i_matrix = get_matrix_index(min,max,i)
+      puts "DEBUG: i_matrix = #{i_matrix.inspect}"
+      matrix[i_matrix[0]][i_matrix[1]] = arr[i]
+    end
+    puts "DEBUG: arr = #{arr.inspect}"
+    puts "DEBUG: b_l = #{b_l.inspect}"
+    n_m -= 2
+    n_n -= 2
+    puts "DEBUG: n_m = #{n_m}, n_n = #{n_n}"
+  end while n_m >= 2 && n_n >= 2
+end
+
+print_matrix(matrix)
+rotate_matrix(matrix,M,N,R)
+print_matrix(matrix)
