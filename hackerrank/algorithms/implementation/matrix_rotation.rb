@@ -77,6 +77,18 @@ def rotate_left(arr,k)
   end
 end
 
+def rotate_right(arr,k)
+  if k > arr.length
+    k = k % arr.length
+  end
+  k = arr.length - k
+  if k == 0
+    arr
+  else
+    arr[k..-1].concat(arr[0..k-1])
+  end
+end
+
 def rotate_matrix(matrix,m,n,r)
   n_m = m
   n_n = n
@@ -94,7 +106,7 @@ def rotate_matrix(matrix,m,n,r)
       v_matrix = matrix[i_matrix[0]][i_matrix[1]]
       arr << v_matrix
     end
-    arr = rotate_left(arr,r)
+    arr = rotate_right(arr,r)
     arr.size.times do |i|
       i_matrix = get_matrix_index(min,max,i)
       matrix[i_matrix[0]][i_matrix[1]] = arr[i]
